@@ -1,0 +1,2 @@
+# InterviewPractice
+Standard algorithm
