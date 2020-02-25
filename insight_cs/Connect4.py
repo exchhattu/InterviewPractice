@@ -144,7 +144,7 @@ class Connect4:
                 print("\n")
 
 
-
+# main program starts here
 c4 = Connect4(6)
 c4.init_first_ball()
 while True:
