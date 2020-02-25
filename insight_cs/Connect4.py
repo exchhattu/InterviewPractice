@@ -4,22 +4,22 @@ Connect 4
 """
 
 import numpy as np
-from numpy.random.randint import randint 
+from numpy.random import randint 
 
 
 class Connect4:
 
-    def __inti__(self, board_size):
+    def __init__(self, board_size):
         """
         set a board size, it should be square and board_size is greater than 4
         """
-        self._board_size = board
+        self._board_size = board_size
         if self._board_size < 4:
             print("Invalid board size")
             sys.exit()
 
         # initailize a board
-        self._board = [ [0]* self._board_size for _ in range(self._board_size): 
+        self._board = [ [0]* self._board_size for _ in range(self._board_size)] 
         self._is_computer = True
 
     def init_first_ball(self):
@@ -29,7 +29,7 @@ class Connect4:
     def udpate_user(self, user):
         self._is_computer = user
 
-    def user_input(self, user, col):
+    def user_input(self, col):
         """
         check the validity of inputs by user
         """
@@ -51,7 +51,7 @@ class Connect4:
                 j = col + 4
                 player = self._board[row][j]
                 while k < j:
-                    if self._board[row][k] == if self._board[row][j]:  
+                    if self._board[row][k] == self._board[row][j]:  
                         k+=1
                         j-=1
                         return player
@@ -67,7 +67,7 @@ class Connect4:
                 j = row + 4
                 player = self._board[k][col]
                 while k < j:
-                    if self._board[k][col] == if self._board[j][col]:  
+                    if self._board[k][col] == self._board[j][col]:  
                         k+=1
                         j-=1
                         return player
@@ -120,6 +120,7 @@ class Connect4:
                         print("Winner: ", r1)
                         return True
                     r2 = matches_dig2(i, j)
+                    if r2:
                         print("Winner: ", r2)
                         return True
             if self.check_empty():
@@ -128,8 +129,8 @@ class Connect4:
 
 
         def check_empty(self):
-            for i in range(len(self._board))
-                for j in range(len(self._board[0]))
+            for i in range(len(self._board)):
+                for j in range(len(self._board[0])):
                     if self._board[i][j] == 0:
                         return False
             return True
@@ -137,8 +138,8 @@ class Connect4:
         def print_board(self):
             """ print a current state of board """
 
-            for i in range(len(self._board))
-                for j in range(len(self._board[0]))
+            for i in range(len(self._board)):
+                for j in range(len(self._board[0])):
                     print(self._board[i][j] + ",")
                 print("\n")
 
@@ -147,14 +148,14 @@ class Connect4:
 c4 = Connect4(6)
 c4.init_first_ball()
 while True:
-    if self._is_computer: 
-        col = input("select ", col )
+    if c4._is_computer: 
+        col = input("select: ")
         c4.user_input(col)
-        c4.udpate_user(False):
-    elif not self._is_computer: 
-        col = randint(0, self._board_size -1) 
+        c4.udpate_user(False)
+    elif not c4._is_computer: 
+        col = randint(0, c4._board_size -1) 
         c4.user_input(col)
-        c4.udpate_user(True):
+        c4.udpate_user(True)
     c4.print_board()
     if c4.check_winning_cond(): break
 
